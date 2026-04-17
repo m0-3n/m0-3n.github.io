@@ -1202,28 +1202,6 @@
       </div>
     </div>
 
-    <!-- LABS LIST -->
-    <div style="margin-top: 48px;">
-      <div class="labs-section-title">Labs Completed on CyberDefenders</div>
-      <div class="labs-section-sub">All labs completed as of April 2026 · filtered by category</div>
-
-      <div class="labs-filter" id="labsFilter">
-        <button class="filter-btn active" data-cat="all">All</button>
-        <button class="filter-btn" data-cat="network">Network Forensics</button>
-        <button class="filter-btn" data-cat="endpoint">Endpoint Forensics</button>
-        <button class="filter-btn" data-cat="threat">Threat Intel</button>
-        <button class="filter-btn" data-cat="hunting">Threat Hunting</button>
-        <button class="filter-btn" data-cat="malware">Malware Analysis</button>
-        <button class="filter-btn" data-cat="cloud">Cloud Forensics</button>
-      </div>
-
-      <div class="labs-grid" id="labsGrid">
-        <!-- populated by JS -->
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- CONTACT -->
 <section id="contact">
   <div class="container">
@@ -1244,94 +1222,6 @@
 <footer>
   <p>Built by <span>Moinuddin Ahmed</span> · SOC Analyst </p>
 </footer>
-
-<script>
-  // Mobile nav
-  const toggle = document.getElementById('navToggle');
-  const links  = document.getElementById('navLinks');
-  toggle.addEventListener('click', () => links.classList.toggle('open'));
-  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
-
-  // Labs data from CyberDefenders completed list
-  const labs = [
-    { name: "ContainerBreak - Rootkit Trail", cat: "endpoint", diff: "easy" },
-    { name: "RediShell - Kinsing", cat: "network", diff: "easy" },
-    { name: "Maranhao", cat: "endpoint", diff: "easy" },
-    { name: "RevengeHotels APT", cat: "endpoint", diff: "easy" },
-    { name: "Lockdown", cat: "network", diff: "easy" },
-    { name: "XLMRat", cat: "network", diff: "easy" },
-    { name: "Tusk Infostealer", cat: "threat", diff: "easy" },
-    { name: "FakeGPT", cat: "malware", diff: "easy" },
-    { name: "Openfire", cat: "network", diff: "easy" },
-    { name: "DanaBot", cat: "network", diff: "easy" },
-    { name: "Reveal", cat: "endpoint", diff: "easy" },
-    { name: "JetBrains", cat: "network", diff: "easy" },
-    { name: "NerisBot", cat: "hunting", diff: "easy" },
-    { name: "Red Stealer", cat: "threat", diff: "easy" },
-    { name: "XXE Infiltration", cat: "network", diff: "easy" },
-    { name: "3CX Supply Chain", cat: "threat", diff: "easy" },
-    { name: "Volatility Traces", cat: "endpoint", diff: "easy" },
-    { name: "IcedID", cat: "threat", diff: "easy" },
-    { name: "RetailBreach", cat: "network", diff: "easy" },
-    { name: "Web Investigation", cat: "network", diff: "easy" },
-    { name: "Ramnit", cat: "endpoint", diff: "easy" },
-    { name: "WebStrike", cat: "network", diff: "easy" },
-    { name: "PoisonedCredentials", cat: "network", diff: "easy" },
-    { name: "PsExec Hunt", cat: "network", diff: "easy" },
-    { name: "Oski", cat: "threat", diff: "easy" },
-    { name: "AzureHunt", cat: "cloud", diff: "easy" },
-    { name: "The Crime", cat: "endpoint", diff: "easy" },
-    { name: "REvil - GOLD SOUTHFIELD", cat: "hunting", diff: "easy" },
-    { name: "Yellow RAT", cat: "threat", diff: "easy" },
-    { name: "Tomcat Takeover", cat: "network", diff: "easy" },
-    { name: "AWSRaid", cat: "cloud", diff: "easy" },
-    { name: "T1110-003", cat: "hunting", diff: "easy" },
-    { name: "T1584.004", cat: "threat", diff: "easy" },
-    { name: "RedLine", cat: "endpoint", diff: "easy" },
-    { name: "PacketDetective", cat: "network", diff: "easy" },
-    { name: "GrabThePhisher", cat: "threat", diff: "easy" },
-    { name: "Lespion", cat: "threat", diff: "easy" },
-    { name: "Insider", cat: "endpoint", diff: "easy" },
-    { name: "Poisoned PyTorch", cat: "hunting", diff: "medium" },
-    { name: "Perfect Survey", cat: "hunting", diff: "medium" },
-    { name: "MBuchus", cat: "threat", diff: "medium" },
-    { name: "Black Basta", cat: "hunting", diff: "medium" },
-    { name: "PhishStrike", cat: "threat", diff: "medium" },
-  ];
-
-  const catMap = {
-    network: "Network Forensics",
-    endpoint: "Endpoint Forensics",
-    threat: "Threat Intel",
-    hunting: "Threat Hunting",
-    malware: "Malware Analysis",
-    cloud: "Cloud Forensics",
-  };
-
-  function renderLabs(filter) {
-    const grid = document.getElementById('labsGrid');
-    const filtered = filter === 'all' ? labs : labs.filter(l => l.cat === filter);
-    grid.innerHTML = filtered.map(l => `
-      <div class="lab-item">
-        <div class="lab-name">${l.name}</div>
-        <div class="lab-meta">
-          <span class="lab-cat">${catMap[l.cat]}</span>
-          <span class="lab-diff diff-${l.diff}">${l.diff}</span>
-        </div>
-      </div>
-    `).join('');
-  }
-
-  renderLabs('all');
-
-  document.getElementById('labsFilter').addEventListener('click', e => {
-    const btn = e.target.closest('.filter-btn');
-    if (!btn) return;
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderLabs(btn.dataset.cat);
-  });
-</script>
 
 </body>
 </html>
