@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Moinuddin Ahmed — Blue Team Analyst</title>
+  <meta name="description" content="BTL1 Certified Blue Team Analyst | SOC | DFIR | Threat Intelligence | #6 in India on CyberDefenders" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ── RESET & BASE ─────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #080d13;
+      --bg2:       #0d1520;
+      --bg3:       #111c2b;
+      --border:    #1a2d42;
+      --accent:    #00c2ff;
+      --accent2:   #0077aa;
+      --gold:      #f0a500;
+      --text:      #d4e4f0;
+      --muted:     #5a7a96;
+      --white:     #ffffff;
+      --mono:      'JetBrains Mono', monospace;
+      --sans:      'Syne', sans-serif;
+      --radius:    6px;
+      --transition: 0.22s ease;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 14px;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    a { color: var(--accent); text-decoration: none; transition: color var(--transition); }
+    a:hover { color: var(--white); }
+
+    /* ── SCROLLBAR ────────────────────────────────── */
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent2); border-radius: 2px; }
+
+    /* ── NAV ──────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(8, 13, 19, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: 16px;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 1.8rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    .nav-toggle { display: none; cursor: pointer; flex-direction: column; gap: 5px; }
+    .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--muted); border-radius: 2px; transition: var(--transition); }
+
+    /* ── SECTIONS ─────────────────────────────────── */
+    section { padding: 90px 0 60px; }
+    .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: var(--sans);
+      font-size: clamp(22px, 4vw, 30px);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 36px;
+      position: relative;
+      padding-bottom: 14px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 36px; height: 2px;
+      background: var(--accent);
+    }
+
+    /* ── HERO ─────────────────────────────────────── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* grid background */
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.35;
+    }
+
+    /* radial glow */
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: -10%; left: -5%;
+      width: 60%; height: 80%;
+      background: radial-gradient(ellipse, rgba(0,194,255,0.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid var(--accent2);
+      padding: 4px 12px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+      animation: fadeUp 0.6s ease both;
+    }
+
+    .hero-name {
+      font-family: var(--sans);
+      font-size: clamp(38px, 8vw, 72px);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.05;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+      animation: fadeUp 0.6s 0.1s ease both;
+    }
+
+    .hero-name span { color: var(--accent); }
+
+    .hero-role {
+      font-size: clamp(14px, 2vw, 17px);
+      color: var(--muted);
+      margin-bottom: 10px;
+      animation: fadeUp 0.6s 0.2s ease both;
+    }
+
+    .hero-tagline {
+      font-size: clamp(13px, 1.8vw, 15px);
+      color: var(--text);
+      max-width: 520px;
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s 0.3s ease both;
+    }
+
+    .hero-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 36px;
+      animation: fadeUp 0.6s 0.35s ease both;
+    }
+
+    .badge {
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: var(--radius);
+      font-weight: 500;
+      border: 1px solid;
+    }
+
+    .badge-gold {
+      color: var(--gold);
+      border-color: rgba(240,165,0,0.35);
+      background: rgba(240,165,0,0.07);
+    }
+
+    .badge-blue {
+      color: var(--accent);
+      border-color: rgba(0,194,255,0.3);
+      background: rgba(0,194,255,0.06);
+    }
+
+    .hero-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      animation: fadeUp 0.6s 0.4s ease both;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 12px;
+      font-weight: 500;
+      padding: 10px 20px;
+      border-radius: var(--radius);
+      border: 1px solid;
+      cursor: pointer;
+      transition: all var(--transition);
+      letter-spacing: 0.04em;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      border-color: var(--accent);
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--accent);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text);
+      border-color: var(--border);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    /* ── ABOUT ────────────────────────────────────── */
+    #about { background: var(--bg2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text);
+      margin-bottom: 14px;
+      font-size: 13.5px;
+    }
+
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .stat-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px;
+      transition: border-color var(--transition);
+    }
+
+    .stat-card:hover { border-color: var(--accent2); }
+
+    .stat-value {
+      font-family: var(--sans);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── SKILLS ───────────────────────────────────── */
+    #skills { background: var(--bg); }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 22px;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .skill-card:hover {
+      border-color: var(--accent2);
+      transform: translateY(-2px);
+    }
+
+    .skill-card-title {
+      font-family: var(--sans);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-card-title::before {
+      content: '';
+      display: block;
+      width: 3px; height: 14px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+    }
+
+    .skill-tag {
+      font-size: 11.5px;
+      padding: 3px 10px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--text);
+    }
+
+    /* ── CERTIFICATIONS ───────────────────────────── */
+    #certifications { background: var(--bg2); }
+
+    .cert-featured {
+      background: var(--bg3);
+      border: 1px solid rgba(240,165,0,0.3);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 16px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--transition);
+    }
+
+    .cert-featured:hover { border-color: var(--gold); }
+
+    .cert-featured::before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0;
+      width: 200px; height: 200px;
+      background: radial-gradient(circle, rgba(240,165,0,0.06), transparent 70%);
+      pointer-events: none;
+    }
+
+    .cert-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 14px;
+    }
+
+    .cert-name {
+      font-family: var(--sans);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .cert-issuer {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .cert-score {
+      text-align: right;
+      flex-shrink: 0;
+    }
+
+    .cert-score-val {
+      font-family: var(--sans);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--gold);
+      line-height: 1;
+    }
+
+    .cert-score-label {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .cert-gold-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(240,165,0,0.12);
+      border: 1px solid rgba(240,165,0,0.4);
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 600;
+      padding: 5px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+
+    .cert-domains {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .cert-domain {
+      font-size: 11.5px;
+      padding: 3px 10px;
+      background: rgba(0,194,255,0.07);
+      border: 1px solid rgba(0,194,255,0.2);
+      border-radius: 3px;
+      color: var(--accent);
+    }
+
+    .cert-secondary {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 22px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: border-color var(--transition);
+    }
+
+    .cert-secondary:hover { border-color: var(--accent2); }
+
+    .cert-secondary-name {
+      font-weight: 600;
+      color: var(--white);
+      font-size: 13px;
+    }
+
+    .cert-secondary-sub {
+      font-size: 11.5px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── EXPERIENCE ───────────────────────────────── */
+    #experience { background: var(--bg); }
+
+    .exp-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 24px 28px;
+      transition: border-color var(--transition);
+    }
+
+    .exp-card:hover { border-color: var(--accent); }
+
+    .exp-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    .exp-title {
+      font-family: var(--sans);
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .exp-org {
+      font-size: 12.5px;
+      color: var(--accent);
+    }
+
+    .exp-date {
+      font-size: 11.5px;
+      color: var(--muted);
+      white-space: nowrap;
+      text-align: right;
+    }
+
+    .exp-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .exp-bullets li {
+      font-size: 13px;
+      color: var(--text);
+      padding-left: 18px;
+      position: relative;
+    }
+
+    .exp-bullets li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 12px;
+    }
+
+    /* ── PROJECTS ─────────────────────────────────── */
+    #projects { background: var(--bg2); }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .project-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+
+    .project-card:hover {
+      border-color: var(--accent2);
+      transform: translateY(-2px);
+    }
+
+    .project-name {
+      font-family: var(--sans);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .project-type {
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 12px;
+    }
+
+    .project-desc {
+      font-size: 13px;
+      color: var(--text);
+      flex: 1;
+      margin-bottom: 18px;
+    }
+
+    .project-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+    }
+
+    .project-tag {
+      font-size: 10.5px;
+      padding: 2px 8px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--muted);
+    }
+
+    .project-link {
+      font-size: 11.5px;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .project-link:hover { color: var(--white); }
+
+    /* ── CYBER RANGE ──────────────────────────────── */
+    #range { background: var(--bg); }
+
+    .range-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .range-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px;
+      transition: border-color var(--transition);
+    }
+
+    .range-card:hover { border-color: var(--accent2); }
+
+    .range-card.featured {
+      grid-column: 1 / -1;
+      border-color: rgba(0,194,255,0.25);
+      background: var(--bg3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .range-card.featured::after {
+      content: '';
+      position: absolute;
+      top: -30%; right: -10%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(0,194,255,0.05), transparent 70%);
+      pointer-events: none;
+    }
+
+    .range-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 16px;
+      gap: 12px;
+    }
+
+    .range-platform {
+      font-family: var(--sans);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 3px;
+    }
+
+    .range-rank {
+      font-family: var(--sans);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--accent);
+      text-align: right;
+      line-height: 1;
+    }
+
+    .range-rank-label {
+      font-size: 11px;
+      color: var(--muted);
+      text-align: right;
+    }
+
+    .range-stats {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 16px;
+    }
+
+    .range-stat { }
+
+    .range-stat-val {
+      font-family: var(--sans);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    .range-stat-key {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .range-domains {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 14px;
+    }
+
+    .range-domain {
+      font-size: 11px;
+      padding: 3px 9px;
+      background: rgba(0,194,255,0.07);
+      border: 1px solid rgba(0,194,255,0.18);
+      border-radius: 3px;
+      color: var(--accent);
+    }
+
+    .range-writeups {
+      font-size: 12.5px;
+      color: var(--text);
+      padding: 10px 14px;
+      background: var(--bg2);
+      border-radius: var(--radius);
+      border-left: 2px solid var(--accent);
+    }
+
+    .range-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 12px;
+    }
+
+    .range-badge {
+      font-size: 11px;
+      padding: 3px 9px;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 3px;
+      color: var(--text);
+    }
+
+    /* ── CONTACT ──────────────────────────────────── */
+    #contact {
+      background: var(--bg2);
+      text-align: center;
+    }
+
+    .contact-inner {
+      max-width: 520px;
+      margin: 0 auto;
+    }
+
+    .contact-text {
+      color: var(--muted);
+      font-size: 13.5px;
+      margin-bottom: 28px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-bottom: 40px;
+    }
+
+    /* ── FOOTER ───────────────────────────────────── */
+    footer {
+      background: var(--bg);
+      border-top: 1px solid var(--border);
+      padding: 20px 2rem;
+      text-align: center;
+      font-size: 11.5px;
+      color: var(--muted);
+    }
+
+    footer span { color: var(--accent); }
+
+    /* ── ANIMATIONS ───────────────────────────────── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MOBILE ───────────────────────────────────── */
+    @media (max-width: 700px) {
+      nav { padding: 0 1.2rem; }
+      .nav-links { display: none; flex-direction: column; gap: 1rem; position: absolute; top: 54px; left: 0; right: 0; background: var(--bg2); padding: 1.4rem 2rem; border-bottom: 1px solid var(--border); }
+      .nav-links.open { display: flex; }
+      .nav-toggle { display: flex; }
+      .container { padding: 0 1.2rem; }
+      section { padding: 70px 0 50px; }
+      .about-grid { grid-template-columns: 1fr; }
+      .about-stats { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .range-grid { grid-template-columns: 1fr; }
+      .range-card.featured { grid-column: auto; }
+      .cert-top { flex-direction: column; }
+      .cert-score { text-align: left; }
+      .exp-header { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ──────────────────────────────────────── -->
+<nav>
+  <div class="nav-logo">m0<span>-3n</span></div>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#certifications">Certs</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#range">Cyber Range</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ── HERO ─────────────────────────────────────── -->
+<section id="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">// Blue Team · SOC · DFIR · Threat Intelligence</div>
+    <h1 class="hero-name">Moinuddin<br><span>Ahmed</span></h1>
+    <p class="hero-role">Blue Team Analyst Intern &nbsp;·&nbsp; BTL1 Certified (Gold) &nbsp;·&nbsp; #6 in India — CyberDefenders</p>
+    <p class="hero-tagline">I detect threats, investigate incidents, and defend systems — not just study how to.</p>
+    <div class="hero-badges">
+      <span class="badge badge-gold">⭐ BTL1 Gold Coin · 95%</span>
+      <span class="badge badge-blue">#6 India · CyberDefenders</span>
+      <span class="badge badge-blue">43+ Labs Completed</span>
+      <span class="badge badge-blue">51-Day Active Streak</span>
+    </div>
+    <div class="hero-links">
+      <a href="mailto:moin6105@gmail.com" class="btn btn-primary">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Get in Touch
+      </a>
+      <a href="https://cyberdefenders.org/p/Kermit" target="_blank" class="btn btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        CyberDefenders
+      </a>
+      <a href="https://github.com/m0-3n" target="_blank" class="btn btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/m0-3n" target="_blank" class="btn btn-outline">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── ABOUT ─────────────────────────────────────── -->
+<section id="about">
+  <div class="container">
+    <p class="section-label">01 / about</p>
+    <h2 class="section-title">Who I Am</h2>
+    <div class="about-grid">
+      <div class="about-text">
+        <p>Cybersecurity is not what I study — it's what I actively practice every day. I'm a 3rd-year B.Tech CSE (Cybersecurity) student at SRMIST, focused entirely on the <strong style="color:var(--accent)">Blue Team</strong>: detecting threats, investigating incidents, and building defender instincts through real-world lab work.</p>
+        <p>I hold the <strong style="color:var(--gold)">BTL1 certification with a 95% score and Gold Coin</strong> — awarded to the top tier of candidates globally. On CyberDefenders, I'm ranked <strong style="color:var(--accent)">#6 in India</strong> with 43+ labs across Network Forensics, SIEM, Endpoint Forensics, Threat Intelligence, and Malware Analysis.</p>
+        <p>I document everything — investigation methodology, tool usage, findings — through technical writeups. I'm seeking a cybersecurity internship in SOC, DFIR, or Threat Intelligence where I can contribute from day one.</p>
+      </div>
+      <div class="about-stats">
+        <div class="stat-card">
+          <div class="stat-value">#6</div>
+          <div class="stat-label">India Rank · CyberDefenders</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">95%</div>
+          <div class="stat-label">BTL1 Score · Gold Coin</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">43+</div>
+          <div class="stat-label">Labs Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value">51d</div>
+          <div class="stat-label">Active Streak</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SKILLS ────────────────────────────────────── -->
+<section id="skills">
+  <div class="container">
+    <p class="section-label">02 / skills</p>
+    <h2 class="section-title">Blue Team Skills</h2>
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-card-title">SOC Operations</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Alert Triage</span>
+          <span class="skill-tag">Log Analysis</span>
+          <span class="skill-tag">IOC Identification</span>
+          <span class="skill-tag">Threat Hunting</span>
+          <span class="skill-tag">Incident Response</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">SIEM &amp; Detection</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Splunk (SPL)</span>
+          <span class="skill-tag">Wazuh</span>
+          <span class="skill-tag">Sysmon</span>
+          <span class="skill-tag">DeepBlueCLI</span>
+          <span class="skill-tag">Event Log Analysis</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Digital Forensics</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Autopsy</span>
+          <span class="skill-tag">FTK Imager</span>
+          <span class="skill-tag">Volatility</span>
+          <span class="skill-tag">Wireshark</span>
+          <span class="skill-tag">Memory Forensics</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Threat Intelligence</div>
+        <div class="skill-tags">
+          <span class="skill-tag">MISP</span>
+          <span class="skill-tag">Phishing Analysis</span>
+          <span class="skill-tag">Email Headers</span>
+          <span class="skill-tag">OSINT</span>
+          <span class="skill-tag">ExifTool</span>
+          <span class="skill-tag">Steghide</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Frameworks</div>
+        <div class="skill-tags">
+          <span class="skill-tag">MITRE ATT&amp;CK</span>
+          <span class="skill-tag">Cyber Kill Chain</span>
+          <span class="skill-tag">Diamond Model</span>
+          <span class="skill-tag">NIST IR</span>
+          <span class="skill-tag">TheHive</span>
+        </div>
+      </div>
+      <div class="skill-card">
+        <div class="skill-card-title">Supporting</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Python</span>
+          <span class="skill-tag">Bash</span>
+          <span class="skill-tag">Linux</span>
+          <span class="skill-tag">Windows</span>
+          <span class="skill-tag">Git</span>
+          <span class="skill-tag">VMs</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CERTIFICATIONS ─────────────────────────────── -->
+<section id="certifications">
+  <div class="container">
+    <p class="section-label">03 / certifications</p>
+    <h2 class="section-title">Certifications</h2>
+
+    <div class="cert-featured">
+      <div class="cert-top">
+        <div>
+          <div class="cert-name">Blue Team Level 1 (BTL1)</div>
+          <div class="cert-issuer">Security Blue Team · 2025</div>
+        </div>
+        <div class="cert-score">
+          <div class="cert-score-val">95%</div>
+          <div class="cert-score-label">Exam Score</div>
+        </div>
+      </div>
+      <div class="cert-gold-badge">⭐ Gold Coin Recipient — Top Tier Globally</div>
+      <div class="cert-domains">
+        <span class="cert-domain">Security Fundamentals</span>
+        <span class="cert-domain">Phishing Analysis</span>
+        <span class="cert-domain">Threat Intelligence</span>
+        <span class="cert-domain">Digital Forensics</span>
+        <span class="cert-domain">SIEM</span>
+        <span class="cert-domain">Incident Response</span>
+      </div>
+    </div>
+
+    <div class="cert-secondary">
+      <div>
+        <div class="cert-secondary-name">Deloitte Australia — Cyber Job Simulation</div>
+        <div class="cert-secondary-sub">Forage · SOC threat analysis &amp; security advisory tasks · 2024</div>
+      </div>
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--muted)" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+    </div>
+  </div>
+</section>
+
+<!-- ── EXPERIENCE ─────────────────────────────────── -->
+<section id="experience">
+  <div class="container">
+    <p class="section-label">04 / experience</p>
+    <h2 class="section-title">Experience</h2>
+    <div class="exp-card">
+      <div class="exp-header">
+        <div>
+          <div class="exp-title">IT &amp; Security Intern</div>
+          <div class="exp-org">Jamia Darussalam Hospital · Oomerabad, Tamil Nadu</div>
+        </div>
+        <div class="exp-date">Nov 2024 – Dec 2024</div>
+      </div>
+      <ul class="exp-bullets">
+        <li>Conducted endpoint asset mapping across 50+ devices — physically located and catalogued all networked hardware, establishing full visibility for a healthcare environment with no prior structured inventory</li>
+        <li>Built a structured asset register with device details, locations, and unique IDs — aligned with CIS Controls asset management principles</li>
+        <li>Supported Hospital Information System (HIS) operations and maintained a secure IT environment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── PROJECTS ───────────────────────────────────── -->
+<section id="projects">
+  <div class="container">
+    <p class="section-label">05 / projects</p>
+    <h2 class="section-title">Security Projects</h2>
+    <div class="projects-grid">
+      <div class="project-card">
+        <div class="project-name">Cyber Portal</div>
+        <div class="project-type">Security Operations Toolkit</div>
+        <p class="project-desc">Centralized platform aggregating cybersecurity utilities for threat assessment, IOC lookup, and security analysis workflows — designed for blue team operational use.</p>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Security Tools</span>
+          </div>
+          <a href="https://github.com/m0-3n/Cyber-Portal" target="_blank" class="project-link">
+            GitHub →
+          </a>
+        </div>
+      </div>
+      <div class="project-card">
+        <div class="project-name">Password Audit Tool</div>
+        <div class="project-type">Offensive Technique Simulation</div>
+        <p class="project-desc">Simulates brute force and dictionary attack techniques with leetspeak detection to assess password policy weaknesses — understanding offensive methods to strengthen defensive controls.</p>
+        <div class="project-footer">
+          <div class="project-tags">
+            <span class="project-tag">Python</span>
+            <span class="project-tag">Attack Simulation</span>
+          </div>
+          <a href="https://github.com/m0-3n/Password-Cracker-GUI" target="_blank" class="project-link">
+            GitHub →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── CYBER RANGE ────────────────────────────────── -->
+<section id="range">
+  <div class="container">
+    <p class="section-label">06 / cyber range</p>
+    <h2 class="section-title">Cyber Range &amp; Achievements</h2>
+    <div class="range-grid">
+
+      <div class="range-card featured">
+        <div class="range-header">
+          <div>
+            <div class="range-platform">CyberDefenders</div>
+            <a href="https://cyberdefenders.org/p/Kermit" target="_blank" style="font-size:12px;color:var(--muted);">cyberdefenders.org/p/Kermit</a>
+          </div>
+          <div>
+            <div class="range-rank">#6</div>
+            <div class="range-rank-label">India Rank</div>
+          </div>
+        </div>
+        <div class="range-stats">
+          <div class="range-stat">
+            <div class="range-stat-val">43+</div>
+            <div class="range-stat-key">Labs</div>
+          </div>
+          <div class="range-stat">
+            <div class="range-stat-val">268</div>
+            <div class="range-stat-key">Points</div>
+          </div>
+          <div class="range-stat">
+            <div class="range-stat-val">#148</div>
+            <div class="range-stat-key">Global</div>
+          </div>
+          <div class="range-stat">
+            <div class="range-stat-val">51d</div>
+            <div class="range-stat-key">Streak</div>
+          </div>
+        </div>
+        <div class="range-domains">
+          <span class="range-domain">Network Forensics</span>
+          <span class="range-domain">Endpoint Forensics</span>
+          <span class="range-domain">Threat Intel</span>
+          <span class="range-domain">SIEM</span>
+          <span class="range-domain">Malware Analysis</span>
+          <span class="range-domain">Cloud Forensics</span>
+        </div>
+        <div class="range-writeups">
+          ✍ Published <strong>4 technical writeups</strong> — Network Forensics &amp; Threat Intel investigation walkthroughs
+        </div>
+      </div>
+
+      <div class="range-card">
+        <div class="range-platform" style="font-size:15px;margin-bottom:4px;">Blue Team Labs Online</div>
+        <a href="https://blueteamlabs.online" target="_blank" style="font-size:11.5px;color:var(--muted);display:block;margin-bottom:14px;">blueteamlabs.online</a>
+        <div class="range-stats" style="margin-bottom:14px;">
+          <div class="range-stat">
+            <div class="range-stat-val" style="font-size:18px;">7</div>
+            <div class="range-stat-key">Investigations</div>
+          </div>
+          <div class="range-stat">
+            <div class="range-stat-val" style="font-size:18px;">5</div>
+            <div class="range-stat-key">Challenges</div>
+          </div>
+          <div class="range-stat">
+            <div class="range-stat-val" style="font-size:18px;">154</div>
+            <div class="range-stat-key">Points</div>
+          </div>
+        </div>
+        <div style="font-size:12px;color:var(--muted);margin-bottom:8px;">Badges earned:</div>
+        <div class="range-badges">
+          <span class="range-badge">Reverser I</span>
+          <span class="range-badge">Intel Analyst I</span>
+          <span class="range-badge">Responder II</span>
+          <span class="range-badge">Challenger II</span>
+          <span class="range-badge">Investigator I</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ────────────────────────────────────── -->
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <p class="section-label" style="text-align:center;">07 / contact</p>
+      <h2 class="section-title" style="text-align:center;">Let's Connect</h2>
+      <p class="contact-text">I'm actively seeking cybersecurity internships in SOC analysis, DFIR, or Threat Intelligence. If you're hiring or want to connect, reach out.</p>
+      <div class="contact-links">
+        <a href="mailto:moin6105@gmail.com" class="btn btn-primary">moin6105@gmail.com</a>
+        <a href="https://linkedin.com/in/m0-3n" target="_blank" class="btn btn-outline">LinkedIn</a>
+        <a href="https://github.com/m0-3n" target="_blank" class="btn btn-outline">GitHub</a>
+        <a href="https://cyberdefenders.org/p/Kermit" target="_blank" class="btn btn-outline">CyberDefenders</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ─────────────────────────────────────── -->
+<footer>
+  <p>Built by <span>Moinuddin Ahmed</span> · Blue Team Analyst · BTL1 Certified (Gold) · #6 India — CyberDefenders</p>
+</footer>
+
+<script>
+  // Mobile nav toggle
+  const toggle = document.getElementById('navToggle');
+  const links  = document.getElementById('navLinks');
+  toggle.addEventListener('click', () => links.classList.toggle('open'));
+  links.querySelectorAll('a').forEach(a => a.addEventListener('click', () => links.classList.remove('open')));
+</script>
+
+</body>
+</html>
